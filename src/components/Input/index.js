@@ -1,13 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react'
 
-export default function Input() {
-    const [value, setValue] = useState(1);
+export default function Input(props) {
     return (
         <div>
-            {value}<br />
-            <button onClick={() => setValue(value + 1)}>
-                Click me
-            </button>
+            <input
+                value={props.name}
+                onChange={e => props.handleName(e)}
+                placeHolder='Search...'
+            />
+            <br />
+            <input
+                defaultChecked={props.onlyProducts}
+                onChange={e => props.handleOnly(e)}
+                type='checkbox'
+                id='checkbox'
+            />
+            <label htmlFor='checkbox'>Only show pruducts in stock</label>
         </div>
     )
 }
