@@ -1,13 +1,11 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 
-export default function Input() {
-    const [value, setValue] = useState(1);
+export default function Input(props) {
+    const [value, setValue] =  useState('');
     return (
         <div>
-            {value}<br />
-            <button onClick={() => setValue(value + 1)}>
-                Click me
-            </button>
+            <textarea onChange={e => setValue(e.target.value)} value={value}></textarea>
+            <button onClick={() => props.sendMsg(value)}>发送</button>
         </div>
     )
 }

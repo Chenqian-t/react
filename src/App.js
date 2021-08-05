@@ -1,42 +1,64 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import './reset.css';
-import { connect } from 'react-redux';
-import { add, jian } from './actions';
+import { Layout } from 'antd';
+import Input from './components/Input';
+import Message from './components/Message';
+import Groups from './components/Groups';
+const { Header, Footer, Sider, Content } = Layout;
 
-const mapStateToProps = state => {
-	return {
-		count: state.count.count,
+const App = (props) => {
+	const [megs, setMegs] = useState([{
+		from: 'id1',
+		to: 'id2',
+		time: 1628159440298,
+		message: 'hello',
+		groupid: 1628159440298,
+	}, {
+		from: 'id2',
+		to: 'id1',
+		time: 1628159500000,
+		message: 'hello too',
+		groupid: 1628159500000,
+	}]);
+	const [groups, setGroups] = useState([{
+		groupname: 'xxxxxx',
+		id: 1628159440298,
+	}])
+	const handleSendMsg = (msg) => {
+		let newMegs = [
+			...megs,
+			{
+				from: 'id1',
+				to: 'id2',
+				time: Date.now(),
+				message: msg,
+				groupid: Date.now(),
+			}
+		]
+		setMegs(newMegs);
 	}
+	return (
+		<Layout>
+			<Sider className='left_sider'>
+				{groups.map(i => <Groups key={i.id} data={i}/>)}
+			</Sider>
+			<Layout>
+				{/* 群名称 */}
+				<Header className='header'>
+					xxxx
+				</Header>
+				{/* 聊天框 */}
+				<Content className='content'>
+					{megs.map(i => <Message key={i.time} data={i} />)}
+				</Content>
+				{/* 输入框 */}
+				<Footer className='footer'>
+					<Input sendMsg={handleSendMsg} />
+				</Footer>
+			</Layout>
+		</Layout>
+	)
 }
 
-// const mapDispatchToProps = dispatch => {
-// 	return {
-// 		add: () => {
-// 			dispatch(add())
-// 		},
-// 		jian: () => {
-// 			dispatch(jian())
-// 		}
-// 	}
-// }
-
-class App extends Component {
-	increment = () => {
-		this.props.add();
-	}
-	decrement = () => {
-		this.props.jian();
-	}
-	render() {
-		return (
-			<div className='app'>
-				<button onClick={this.decrement}>-</button>
-				{this.props.count}
-				<button onClick={this.increment}>+</button>
-			</div>
-		)
-	}
-}
-
-export default connect(mapStateToProps, { add, jian })(App)
+export default App
