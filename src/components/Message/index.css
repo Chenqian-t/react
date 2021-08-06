@@ -1,0 +1,26 @@
+.message-box{
+    margin-top: 10px;
+}
+.message-box img{
+    width: 30px;
+    height: 30px;
+    vertical-align: top;
+    margin: 5px;
+    border-radius: 3px;
+}
+.my-avatar{
+    float: right;
+}
+.message-content{
+    display: inline-block;
+    max-width: 440px;
+}
+.message-content-detail{
+    background: #fff;
+    padding: 6px;
+    border-radius: 3px;
+    text-align: left;
+}
+.my-message-content-detail{
+    background: #95f016;
+}

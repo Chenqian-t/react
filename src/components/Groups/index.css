@@ -1,0 +1,30 @@
+.group-item{
+    height: 60px;
+    padding: 10px;
+    display: flex;
+}
+.group-item:hover{
+    background: #e2e2e2;
+}
+.group-avatar{
+    width: 40px;
+    padding: 0.5px;
+    line-height: 0;
+}
+.group-avatar-item{
+    width: 13px;
+    height: 13px;
+    display: inline-block;
+}
+.group-content{
+    flex: 1;
+    margin: 0 12px;
+}
+.group-content p{
+    height: 50%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.group-tips{
+}

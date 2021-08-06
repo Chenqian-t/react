@@ -1,10 +1,5 @@
+import chatList from './chatList';
+import friendsList from './friendsList';
+import user from './user';
 
-const add = () => ({
-    type: 'ADD',
-});
-
-const jian = () => ({
-    type: 'JIAN',
-});
-
-export {add, jian}
+export { chatList, friendsList, user }

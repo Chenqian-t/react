@@ -1,12 +1,13 @@
 import React from 'react';
+import './index.css';
 
-function Message({data}) {
+function Message({ data }) {
     return (
-        <div className={data.from === 'id1' ? 'my-message' : ''}>
-            <img src="#" alt="xxx"/>
-            <div>
+        <div className={data.from === 'id1' ? 'my-message message-box' : 'message-box'}>
+            <img src="https://cdn.upchina.com/ZZCRM/user/headpic/zz0000001.jpg" alt="xxx" className={data.from === 'id1' ? 'my-avatar' : ''} />
+            <div className='message-content'>
                 <p>{data.from}</p>
-                <p>{data.message}</p>
+                <p className={data.from === 'id1' ? 'my-message-content-detail message-content-detail' : 'message-content-detail'}>{data.message.replace('\n', ' \n ')}</p>
             </div>
         </div>
     )
