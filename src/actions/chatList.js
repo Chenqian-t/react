@@ -4,4 +4,9 @@ const getChatList = () => ({
     type: chatListType.GET_CHAT_LIST,
 });
 
-export { getChatList }
+const getChatListFailed = () => async dispatch => {
+    const re = await fetch('');
+    dispatch(getChatList())
+}
+
+export { getChatList, getChatListFailed }
