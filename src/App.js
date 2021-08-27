@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import './reset.css';
 import { Layout } from 'antd';
 import Message from './components/Message';
 import Groups from './components/Groups';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import MsgSender from './containers/MsgSender';
+import { getUserInfo } from './actions/user';
 const { Header, Footer, Sider, Content } = Layout;
 
 const App = (props) => {
@@ -19,10 +20,16 @@ const App = (props) => {
 		from: 'id2',
 		to: 'id1',
 		time: 1628159500000,
-		message: '地区短时的阿萨德请问请问番茄味发钱的去潍坊去潍坊去潍坊请问请问夫妻我放弃违反请问请问请问请问请问',
+		message: '1111111',
 		groupid: 1628159500000,
 	}]);
 	const groups = useSelector(state => [...state.chatList]);
+	// const userInfo = useSelector(state => ({...state.user}));
+	// console.log(userInfo);
+	// useEffect(() => {
+		// console.log(useDispatch(getUserInfo()))
+	// })
+
 	const handleSendMsg = (msg) => {
 		let newMegs = [
 			...megs,

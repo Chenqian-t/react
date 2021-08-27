@@ -9,6 +9,7 @@ const initState = {
 const user = (state = initState, action) => {
     switch (action.type) {
         case userType.GET_USER_INFO:
+            console.log(action);
             return state;
         default:
             return state;

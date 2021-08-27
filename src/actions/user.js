@@ -1,7 +1,30 @@
 import { userType } from './actionsType';
+import Api from '../api';
 
-const getUserInfo = () => ({
-    type: userType.GET_USER_INFO,
+const getUserInfo = () => async dispatch => {
+    dispatch(fetchUser());
+    let re = await Api.getUserInfo({username: 'user1', password: '123456'});
+    if (re.errcode === 0) {
+        dispatch(fetchUserSucc(re.data));
+    } else {
+        dispatch(fetchUserFail());
+    }
+}
+
+const fetchUser = () => ({
+    type: userType.FETCH_USER,
+    isLoading: true,
 });
 
-export { getUserInfo }
+const fetchUserSucc = (data) => ({
+    type: userType.FETCH_USER_SUCC,
+    isLoading: false,
+    data,
+});
+
+const fetchUserFail = () => ({
+    type: userType.FETCH_USER_FAIL,
+    isLoading: false,
+});
+
+export { getUserInfo, fetchUser, fetchUserSucc, fetchUserFail }

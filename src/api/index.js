@@ -2,9 +2,9 @@ import { api } from '../utils';
 
 class Api {
     static getUserInfo = (params) => api({
-        url: '',
-        method: 'get',
-        params,
+        url: '/login',
+        method: 'post',
+        body: params,
     })
 }
 
