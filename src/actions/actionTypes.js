@@ -7,6 +7,7 @@ const userType = {
     FETCH_USER: 'FETCH_USER',
     FETCH_USER_SUCC: 'FETCH_USER_SUCC',
     FETCH_USER_FAIL: 'FETCH_USER_FAIL',
+    LOGOUT: 'LOGOUT',
 }
 
 const friendsListType = {

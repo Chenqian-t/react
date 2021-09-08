@@ -1,15 +1,19 @@
 import { userType } from './actionTypes';
-import {LoginApi} from '../api';
+import { LoginApi } from '../api';
 
-const getUserInfo = (payload) => async dispatch => {
+const getUserInfo = ({username, password}) => async dispatch => {
     dispatch(fetchUser());
-    let re = await LoginApi.login({username: 'user1', password: '123456'});
+    let re = await LoginApi.login({ username, password });
     if (re.errcode === 0) {
         dispatch(fetchUserSucc(re.data));
     } else {
         dispatch(fetchUserFail());
     }
 }
+
+const logout = () => ({
+    type: userType.LOGOUT,
+})
 
 const fetchUser = () => ({
     type: userType.FETCH_USER,
@@ -27,4 +31,4 @@ const fetchUserFail = () => ({
     isLoading: false,
 });
 
-export { getUserInfo, fetchUser, fetchUserSucc, fetchUserFail }
+export { logout, getUserInfo, fetchUser, fetchUserSucc, fetchUserFail }

@@ -1,25 +1,13 @@
 import React from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
 import './App.css';
 import './reset.css';
-import Login from './views/Login';
-import Home from './views/Home';
-import NotFound from './views/NotFound';
+import Auth from './utils/Auth';
+import { routerConfig } from './router.config';
 
 const App = () => (
 	<Switch>
-		<Route exact path="/">
-			<Redirect to="/login"></Redirect>
-		</Route>
-		<Route exact path="/login">
-			<Login />
-		</Route>
-		<Route exact path="/home">
-			<Home />
-		</Route>
-		<Route path="*">
-			<NotFound />
-		</Route>
+		<Auth config={routerConfig} />
 	</Switch>
 )
 

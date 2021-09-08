@@ -1,8 +1,8 @@
 import { userType } from '../actions/actionTypes';
 
 const initState = {
-    userInfo: {},
-    isLogin: false,
+    userInfo: JSON.parse(localStorage.getItem('__userinfo__') || '{}'),
+    isLogin: Boolean(localStorage.getItem('__token__')),
     isLoading: false,
 }
 
@@ -15,8 +15,10 @@ const user = (state = initState, action) => {
             };
         case userType.FETCH_USER_SUCC:
             console.log(action);
+            localStorage.setItem('__token__', true);
+            localStorage.setItem('__userinfo__', JSON.stringify(action.data.userInfo));
             return {
-                userInfo: action.payload,
+                userInfo: action.data.userInfo,
                 isLoading: false,
                 isLogin: true
             };
@@ -25,6 +27,13 @@ const user = (state = initState, action) => {
                 ...state,
                 isLoading: false
             };
+        case userType.LOGOUT:
+            localStorage.removeItem('__token__');
+            return {
+                ...state,
+                userInfo: {},
+                isLogin: false,
+            }
         default:
             return state;
     }
