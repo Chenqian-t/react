@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import './App.css';
 import './reset.css';
 import Login from './views/Login';
@@ -8,6 +8,9 @@ import NotFound from './views/NotFound';
 
 const App = () => (
 	<Switch>
+		<Route exact path="/">
+			<Redirect to="/login"></Redirect>
+		</Route>
 		<Route exact path="/login">
 			<Login />
 		</Route>

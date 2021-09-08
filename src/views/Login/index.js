@@ -1,10 +1,16 @@
 import React from 'react';
 import './Login.css';
 import { Card, Form, Input, Button } from 'antd';
+import { useSelector, useDispatch } from 'react-redux';
+import { getUserInfo } from '../../actions/user';
+import { Redirect } from 'react-router-dom';
 
-export default function Login() {
-    const onFinish = (values) => {
-        console.log('Success:', values);
+const Login = () => {
+    const userInfo = useSelector(state => ({ ...state.user }));
+    const dispatch = useDispatch();
+
+    const onFinish = async (values) => {
+        dispatch(getUserInfo(values));
     };
 
     const onFinishFailed = (errorInfo) => {
@@ -12,6 +18,7 @@ export default function Login() {
     };
 
     return (
+        userInfo.isLogin ? <Redirect to='/home' /> :
         <div className="login">
             <div className="login_box center_box">
                 <Card title="登录" hoverable style={{ height: '100%' }}>
@@ -59,9 +66,9 @@ export default function Login() {
                                 span: 16,
                             }}
                         >
-                            <Button type="primary" htmlType="submit">
+                            <Button type="primary" htmlType="submit" loading={userInfo.isLoading}>
                                 登录
-                            </Button>
+                        </Button>
                         </Form.Item>
                     </Form>
                 </Card>
@@ -69,3 +76,5 @@ export default function Login() {
         </div>
     )
 }
+
+export default Login
