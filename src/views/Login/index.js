@@ -18,7 +18,7 @@ const Login = () => {
     };
 
     return (
-        userInfo.isLogin ? <Redirect to='/home' /> :
+        userInfo.isLogin ? <Redirect to='/react/build/home' /> :
         <div className="login">
             <div className="login_box center_box">
                 <Card title="登录" hoverable style={{ height: '100%' }}>

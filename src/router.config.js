@@ -5,17 +5,17 @@ import NotFound from './views/NotFound';
 export const routerConfig = [
     {
         path: '/',
-        redirect: '/home',
+        redirect: '/react/build/home',
         auth: true,
     }, {
-        path: '/home',
+        path: '/react/build/home',
         component: Home,
         auth: true,
     }, {
-        path: '/login',
+        path: '/react/build/login',
         component: Login,
     }, {
-        path: '/notfound',
+        path: '/react/build/notfound',
         component: NotFound
     }
 ];
