@@ -18,8 +18,8 @@ const Auth = (props) => {
 
     if (isLogin) {
         // 如果是登陆状态，想要跳转到登陆，重定向到主页
-        if (pathname === '/react/build/login') {
-            return <Redirect to='/react/build/' />
+        if (pathname === '/login') {
+            return <Redirect to='/' />
         } else {
             // 如果路由合法，就跳转到相应的路由
             if (target) {
@@ -28,16 +28,16 @@ const Auth = (props) => {
                 return <Route exact path={pathname} component={component} />;
             } else {
                 // 如果路由不合法，重定向到 notfound 页面
-                return <Redirect to='/react/build/notfound' />
+                return <Redirect to='/notfound' />
             }
         }
     } else {
         // 非登陆状态下，当路由合法时且需要权限校验时，跳转到登陆页面，要求登陆
         if (target && target.auth) {
-            return <Redirect to='/react/build/login' />
+            return <Redirect to='/login' />
         } else {
             // 非登陆状态下，路由不合法时，重定向至 notfound
-            return <Redirect to='/react/build/notfound' />
+            return <Redirect to='/notfound' />
         }
     }
 }
