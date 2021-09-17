@@ -3,7 +3,6 @@ import './Login.css';
 import { Card, Form, Input, Button } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
 import { getUserInfo } from '../../actions/user';
-import { Redirect } from 'react-router-dom';
 
 const Login = () => {
     const userInfo = useSelector(state => ({ ...state.user }));
@@ -18,7 +17,6 @@ const Login = () => {
     };
 
     return (
-        userInfo.isLogin ? <Redirect to='/home' /> :
         <div className="login">
             <div className="login_box center_box">
                 <Card title="登录" hoverable style={{ height: '100%' }}>

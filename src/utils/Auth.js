@@ -1,10 +1,11 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const Auth = (props) => {
     const { location, config } = props;
     const { pathname } = location;
-    const isLogin = Boolean(localStorage.getItem('__token__'));
+    const { isLogin } = useSelector(state => ({ ...state.user }));
 
     // 如果该路由不用进行权限校验，登录状态下登陆页除外
     // 因为登陆后，无法跳转到登陆页

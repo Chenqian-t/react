@@ -1,12 +1,15 @@
 import { userType } from './actionTypes';
 import { LoginApi } from '../api';
+import { message } from 'antd';
 
 const getUserInfo = ({username, password}) => async dispatch => {
     dispatch(fetchUser());
     let re = await LoginApi.login({ username, password });
     if (re.errcode === 0) {
+        message.success('登陆成功！');
         dispatch(fetchUserSucc(re.data));
     } else {
+        message.error('登陆失败！');
         dispatch(fetchUserFail());
     }
 }

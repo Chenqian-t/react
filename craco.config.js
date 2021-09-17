@@ -8,7 +8,7 @@ module.exports = {
             webpackConfig.output = {
                 ...webpackConfig.output,
                 // path: Path.resolve(__dirname, 'dist'),
-                publicPath: '/react/build',
+                publicPath: process.env.NODE_ENV === 'production' ? '/react/build' : '/',
             };
             // console.log(webpackConfig);
             return webpackConfig;
